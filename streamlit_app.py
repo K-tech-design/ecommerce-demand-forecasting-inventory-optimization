@@ -12,17 +12,23 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 model_path = os.path.join(BASE_DIR, "artifacts", "model.pkl")
 feature_path = os.path.join(BASE_DIR, "artifacts", "model_feature.pkl")
+data_path = os.path.join(BASE_DIR, "artifacts", "final_feature_dataset.csv")
 
-model = pickle.load(open(model_path, "rb"))
-features = pickle.load(open(feature_path, "rb"))
+#model = pickle.load(open(model_path, "rb"))
+#features = pickle.load(open(feature_path, "rb"))
 
+with open(model_path, "rb") as f:
+    model = pickle.load(f)
+
+with open(feature_path, "rb") as f:
+    features = pickle.load(f)
 # -----------------------------
 # Load Dataset
 # -----------------------------
 
 @st.cache_data
 def load_data():
-    return pd.read_csv("artifacts/final_feature_dataset.csv")
+    return pd.read_csv(data_path)
 
 df = load_data()
 
