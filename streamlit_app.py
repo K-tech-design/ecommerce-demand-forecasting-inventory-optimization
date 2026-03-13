@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import pickle
@@ -7,8 +8,13 @@ import numpy as np
 # Load Model and Feature List
 # -----------------------------
 
-model = pickle.load(open("artifacts/model.pkl", "rb"))
-features = pickle.load(open("artifacts/model_feature.pkl", "rb"))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(BASE_DIR, "artifacts", "model.pkl")
+feature_path = os.path.join(BASE_DIR, "artifacts", "model_feature.pkl")
+
+model = pickle.load(open(model_path, "rb"))
+features = pickle.load(open(feature_path, "rb"))
 
 # -----------------------------
 # Load Dataset
