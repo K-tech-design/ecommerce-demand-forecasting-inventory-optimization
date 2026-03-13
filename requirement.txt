@@ -1,5 +1,9 @@
 numpy
 pandas 
 seaborn
+python-dotenv
+ipykernel
+scikit-learn
+xgboost
 
 #-e .
